@@ -8,7 +8,14 @@ spec:
     version: 2.2.1
     replicas: 3
     listeners:
-      plain: {}
+      plain:
+        networkPolicyPeers:
+        - namespaceSelector:
+            matchLabels:
+              namespace: kafka
+        - podSelector:
+            matchLabels:
+              app: schema-registry
       tls:
         authentication:
           type: tls
