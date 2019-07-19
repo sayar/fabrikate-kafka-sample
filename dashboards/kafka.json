@@ -119,7 +119,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "count(kafka_server_replicamanager_leadercount{kubernetes_namespace=\"$kubernetes_namespace\",strimzi_io_cluster=\"$strimzi_cluster_name\"})",
+          "expr": "count(kafka_server_replicamanager_leadercount{namespace=\"$kubernetes_namespace\",strimzi_io_cluster=\"$strimzi_cluster_name\"})",
           "format": "time_series",
           "hide": false,
           "intervalFactor": 1,
@@ -202,7 +202,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "sum(kafka_controller_kafkacontroller_activecontrollercount{kubernetes_namespace=\"$kubernetes_namespace\",strimzi_io_cluster=\"$strimzi_cluster_name\"})",
+          "expr": "sum(kafka_controller_kafkacontroller_activecontrollercount{namespace=\"$kubernetes_namespace\",strimzi_io_cluster=\"$strimzi_cluster_name\"})",
           "format": "time_series",
           "hide": false,
           "intervalFactor": 1,
@@ -284,7 +284,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "sum(irate(kafka_controller_controllerstats_uncleanleaderelections_total{kubernetes_namespace=\"$kubernetes_namespace\",strimzi_io_cluster=\"$strimzi_cluster_name\"}[5m]))",
+          "expr": "sum(irate(kafka_controller_controllerstats_uncleanleaderelections_total{namespace=\"$kubernetes_namespace\",strimzi_io_cluster=\"$strimzi_cluster_name\"}[5m]))",
           "format": "time_series",
           "hide": false,
           "intervalFactor": 1,
@@ -366,7 +366,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "sum(kafka_server_replicamanager_partitioncount{kubernetes_namespace=\"$kubernetes_namespace\",strimzi_io_cluster=\"$strimzi_cluster_name\"})",
+          "expr": "sum(kafka_server_replicamanager_partitioncount{namespace=\"$kubernetes_namespace\",strimzi_io_cluster=\"$strimzi_cluster_name\"})",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -447,7 +447,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "sum(kafka_server_replicamanager_underreplicatedpartitions{kubernetes_namespace=\"$kubernetes_namespace\",strimzi_io_cluster=\"$strimzi_cluster_name\"})",
+          "expr": "sum(kafka_server_replicamanager_underreplicatedpartitions{namespace=\"$kubernetes_namespace\",strimzi_io_cluster=\"$strimzi_cluster_name\"})",
           "format": "time_series",
           "hide": false,
           "intervalFactor": 2,
@@ -529,7 +529,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "sum(kafka_controller_kafkacontroller_offlinepartitionscount{kubernetes_namespace=\"$kubernetes_namespace\",strimzi_io_cluster=\"$strimzi_cluster_name\"})",
+          "expr": "sum(kafka_controller_kafkacontroller_offlinepartitionscount{namespace=\"$kubernetes_namespace\",strimzi_io_cluster=\"$strimzi_cluster_name\"})",
           "format": "time_series",
           "hide": false,
           "intervalFactor": 1,
@@ -600,7 +600,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(container_memory_usage_bytes{kubernetes_namespace=\"$kubernetes_namespace\",kubernetes_pod_name=~\"$strimzi_cluster_name-$kafka_broker\",container_name=\"kafka\"}) by (kubernetes_pod_name)",
+          "expr": "sum(container_memory_usage_bytes{namespace=\"$kubernetes_namespace\",kubernetes_pod_name=~\"$strimzi_cluster_name-$kafka_broker\",container_name=\"kafka\"}) by (kubernetes_pod_name)",
           "format": "time_series",
           "hide": false,
           "intervalFactor": 1,
@@ -686,7 +686,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(container_cpu_user_seconds_total{kubernetes_namespace=\"$kubernetes_namespace\",kubernetes_pod_name=~\"$strimzi_cluster_name-$kafka_broker\",container_name=\"kafka\"}[5m])) by (kubernetes_pod_name)",
+          "expr": "sum(rate(container_cpu_user_seconds_total{namespace=\"$kubernetes_namespace\",kubernetes_pod_name=~\"$strimzi_cluster_name-$kafka_broker\",container_name=\"kafka\"}[5m])) by (kubernetes_pod_name)",
           "format": "time_series",
           "hide": false,
           "intervalFactor": 1,
@@ -772,7 +772,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "kubelet_volume_stats_available_bytes{kubernetes_namespace=\"$kubernetes_namespace\",persistentvolumeclaim=~\"data(-[0-9]+)?-$strimzi_cluster_name-kafka-[0-9]+\"}",
+          "expr": "kubelet_volume_stats_available_bytes{namespace=\"$kubernetes_namespace\",persistentvolumeclaim=~\"data(-[0-9]+)?-$strimzi_cluster_name-kafka-[0-9]+\"}",
           "format": "time_series",
           "hide": false,
           "intervalFactor": 1,
@@ -857,7 +857,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(jvm_memory_bytes_used{kubernetes_namespace=\"$kubernetes_namespace\",kubernetes_pod_name=~\"$strimzi_cluster_name-$kafka_broker\",strimzi_io_name=\"$strimzi_cluster_name-kafka\"}[5m])) by (kubernetes_pod_name)",
+          "expr": "sum(rate(jvm_memory_bytes_used{namespace=\"$kubernetes_namespace\",kubernetes_pod_name=~\"$strimzi_cluster_name-$kafka_broker\",strimzi_io_name=\"$strimzi_cluster_name-kafka\"}[5m])) by (kubernetes_pod_name)",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{kubernetes_pod_name}}",
@@ -941,7 +941,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(jvm_gc_collection_seconds_sum{kubernetes_namespace=\"$kubernetes_namespace\",kubernetes_pod_name=~\"$strimzi_cluster_name-$kafka_broker\",strimzi_io_name=\"$strimzi_cluster_name-kafka\"}[5m])) by (kubernetes_pod_name)",
+          "expr": "sum(rate(jvm_gc_collection_seconds_sum{namespace=\"$kubernetes_namespace\",kubernetes_pod_name=~\"$strimzi_cluster_name-$kafka_broker\",strimzi_io_name=\"$strimzi_cluster_name-kafka\"}[5m])) by (kubernetes_pod_name)",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{kubernetes_pod_name}}",
@@ -1025,7 +1025,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(jvm_gc_collection_seconds_count{kubernetes_namespace=\"$kubernetes_namespace\",kubernetes_pod_name=~\"$strimzi_cluster_name-$kafka_broker\",strimzi_io_name=\"$strimzi_cluster_name-kafka\"}[5m])) by (kubernetes_pod_name)",
+          "expr": "sum(rate(jvm_gc_collection_seconds_count{namespace=\"$kubernetes_namespace\",kubernetes_pod_name=~\"$strimzi_cluster_name-$kafka_broker\",strimzi_io_name=\"$strimzi_cluster_name-kafka\"}[5m])) by (kubernetes_pod_name)",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{kubernetes_pod_name}}",
@@ -1135,7 +1135,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "sum(irate(kafka_server_brokertopicmetrics_bytesin_total{kubernetes_namespace=\"$kubernetes_namespace\",strimzi_io_cluster=\"$strimzi_cluster_name\",topic=~\"$kafka_topic\",topic!=\"\",kubernetes_pod_name=~\"$strimzi_cluster_name-$kafka_broker\"}[1m]))",
+          "expr": "sum(irate(kafka_server_brokertopicmetrics_bytesin_total{namespace=\"$kubernetes_namespace\",strimzi_io_cluster=\"$strimzi_cluster_name\",topic=~\"$kafka_topic\",topic!=\"\",kubernetes_pod_name=~\"$strimzi_cluster_name-$kafka_broker\"}[1m]))",
           "format": "time_series",
           "hide": false,
           "intervalFactor": 1,
@@ -1219,7 +1219,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "sum(irate(kafka_server_brokertopicmetrics_bytesout_total{kubernetes_namespace=\"$kubernetes_namespace\",strimzi_io_cluster=\"$strimzi_cluster_name\",topic=~\"$kafka_topic\",topic!=\"\",kubernetes_pod_name=~\"$strimzi_cluster_name-$kafka_broker\"}[1m]))",
+          "expr": "sum(irate(kafka_server_brokertopicmetrics_bytesout_total{namespace=\"$kubernetes_namespace\",strimzi_io_cluster=\"$strimzi_cluster_name\",topic=~\"$kafka_topic\",topic!=\"\",kubernetes_pod_name=~\"$strimzi_cluster_name-$kafka_broker\"}[1m]))",
           "format": "time_series",
           "hide": false,
           "intervalFactor": 1,
@@ -1303,7 +1303,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "sum(irate(kafka_server_brokertopicmetrics_messagesin_total{kubernetes_namespace=\"$kubernetes_namespace\",strimzi_io_cluster=\"$strimzi_cluster_name\",topic=~\"$kafka_topic\",topic!=\"\",kubernetes_pod_name=~\"$strimzi_cluster_name-$kafka_broker\"}[1m]))",
+          "expr": "sum(irate(kafka_server_brokertopicmetrics_messagesin_total{namespace=\"$kubernetes_namespace\",strimzi_io_cluster=\"$strimzi_cluster_name\",topic=~\"$kafka_topic\",topic!=\"\",kubernetes_pod_name=~\"$strimzi_cluster_name-$kafka_broker\"}[1m]))",
           "format": "time_series",
           "hide": false,
           "intervalFactor": 1,
@@ -1387,7 +1387,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "sum(irate(kafka_server_brokertopicmetrics_totalproducerequests_total{kubernetes_namespace=\"$kubernetes_namespace\",strimzi_io_cluster=\"$strimzi_cluster_name\",topic=~\"$kafka_topic\",topic!=\"\",kubernetes_pod_name=~\"$strimzi_cluster_name-$kafka_broker\"}[1m]))",
+          "expr": "sum(irate(kafka_server_brokertopicmetrics_totalproducerequests_total{namespace=\"$kubernetes_namespace\",strimzi_io_cluster=\"$strimzi_cluster_name\",topic=~\"$kafka_topic\",topic!=\"\",kubernetes_pod_name=~\"$strimzi_cluster_name-$kafka_broker\"}[1m]))",
           "format": "time_series",
           "hide": false,
           "intervalFactor": 1,
@@ -1450,7 +1450,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(irate(kafka_server_brokertopicmetrics_bytesin_total{kubernetes_namespace=\"$kubernetes_namespace\",strimzi_io_cluster=\"$strimzi_cluster_name\",topic=~\"$kafka_topic\",topic!=\"\",kubernetes_pod_name=~\"$strimzi_cluster_name-$kafka_broker\"}[1m]))",
+          "expr": "sum(irate(kafka_server_brokertopicmetrics_bytesin_total{namespace=\"$kubernetes_namespace\",strimzi_io_cluster=\"$strimzi_cluster_name\",topic=~\"$kafka_topic\",topic!=\"\",kubernetes_pod_name=~\"$strimzi_cluster_name-$kafka_broker\"}[1m]))",
           "format": "time_series",
           "hide": false,
           "instant": false,
@@ -1460,7 +1460,7 @@
           "refId": "A"
         },
         {
-          "expr": "sum(irate(kafka_server_brokertopicmetrics_bytesout_total{kubernetes_namespace=\"$kubernetes_namespace\",strimzi_io_cluster=\"$strimzi_cluster_name\",topic=~\"$kafka_topic\",topic!=\"\",kubernetes_pod_name=~\"$strimzi_cluster_name-$kafka_broker\"}[1m]))",
+          "expr": "sum(irate(kafka_server_brokertopicmetrics_bytesout_total{namespace=\"$kubernetes_namespace\",strimzi_io_cluster=\"$strimzi_cluster_name\",topic=~\"$kafka_topic\",topic!=\"\",kubernetes_pod_name=~\"$strimzi_cluster_name-$kafka_broker\"}[1m]))",
           "format": "time_series",
           "hide": false,
           "intervalFactor": 1,
@@ -1547,7 +1547,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(irate(kafka_server_brokertopicmetrics_messagesin_total{kubernetes_namespace=\"$kubernetes_namespace\",strimzi_io_cluster=\"$strimzi_cluster_name\",topic=~\"$kafka_topic\",topic!=\"\",kubernetes_pod_name=~\"$strimzi_cluster_name-$kafka_broker\"}[1m]))",
+          "expr": "sum(irate(kafka_server_brokertopicmetrics_messagesin_total{namespace=\"$kubernetes_namespace\",strimzi_io_cluster=\"$strimzi_cluster_name\",topic=~\"$kafka_topic\",topic!=\"\",kubernetes_pod_name=~\"$strimzi_cluster_name-$kafka_broker\"}[1m]))",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "Total Incoming Messages Rate",
@@ -1632,14 +1632,14 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(irate(kafka_server_brokertopicmetrics_totalproducerequests_total{kubernetes_namespace=\"$kubernetes_namespace\",strimzi_io_cluster=\"$strimzi_cluster_name\",topic=~\"$kafka_topic\",topic!=\"\",kubernetes_pod_name=~\"$strimzi_cluster_name-$kafka_broker\"}[1m]))",
+          "expr": "sum(irate(kafka_server_brokertopicmetrics_totalproducerequests_total{namespace=\"$kubernetes_namespace\",strimzi_io_cluster=\"$strimzi_cluster_name\",topic=~\"$kafka_topic\",topic!=\"\",kubernetes_pod_name=~\"$strimzi_cluster_name-$kafka_broker\"}[1m]))",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "Total Produce Request Rate",
           "refId": "A"
         },
         {
-          "expr": "sum(irate(kafka_server_brokertopicmetrics_failedproducerequests_total{kubernetes_namespace=\"$kubernetes_namespace\",strimzi_io_cluster=\"$strimzi_cluster_name\",topic=~\"$kafka_topic\",topic!=\"\",kubernetes_pod_name=~\"$strimzi_cluster_name-$kafka_broker\"}[1m]))",
+          "expr": "sum(irate(kafka_server_brokertopicmetrics_failedproducerequests_total{namespace=\"$kubernetes_namespace\",strimzi_io_cluster=\"$strimzi_cluster_name\",topic=~\"$kafka_topic\",topic!=\"\",kubernetes_pod_name=~\"$strimzi_cluster_name-$kafka_broker\"}[1m]))",
           "format": "time_series",
           "hide": false,
           "intervalFactor": 1,
@@ -1725,14 +1725,14 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(irate(kafka_server_brokertopicmetrics_totalfetchrequests_total{kubernetes_namespace=\"$kubernetes_namespace\",strimzi_io_cluster=\"$strimzi_cluster_name\",topic=~\"$kafka_topic\",topic!=\"\",kubernetes_pod_name=~\"$strimzi_cluster_name-$kafka_broker\"}[1m]))",
+          "expr": "sum(irate(kafka_server_brokertopicmetrics_totalfetchrequests_total{namespace=\"$kubernetes_namespace\",strimzi_io_cluster=\"$strimzi_cluster_name\",topic=~\"$kafka_topic\",topic!=\"\",kubernetes_pod_name=~\"$strimzi_cluster_name-$kafka_broker\"}[1m]))",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "Fetch Request Rate",
           "refId": "A"
         },
         {
-          "expr": "  sum(irate(kafka_server_brokertopicmetrics_failedfetchrequests_total{kubernetes_namespace=\"$kubernetes_namespace\",strimzi_io_cluster=\"$strimzi_cluster_name\",topic=~\"$kafka_topic\",topic!=\"\",kubernetes_pod_name=~\"$strimzi_cluster_name-$kafka_broker\"}[1m]))",
+          "expr": "  sum(irate(kafka_server_brokertopicmetrics_failedfetchrequests_total{namespace=\"$kubernetes_namespace\",strimzi_io_cluster=\"$strimzi_cluster_name\",topic=~\"$kafka_topic\",topic!=\"\",kubernetes_pod_name=~\"$strimzi_cluster_name-$kafka_broker\"}[1m]))",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "Failed Fetch Request Rate",
@@ -1817,7 +1817,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "kafka_network_socketserver_networkprocessoravgidle_percent{kubernetes_namespace=\"$kubernetes_namespace\",strimzi_io_cluster=\"$strimzi_cluster_name\",kubernetes_pod_name=~\"$strimzi_cluster_name-$kafka_broker\"}*100",
+          "expr": "kafka_network_socketserver_networkprocessoravgidle_percent{namespace=\"$kubernetes_namespace\",strimzi_io_cluster=\"$strimzi_cluster_name\",kubernetes_pod_name=~\"$strimzi_cluster_name-$kafka_broker\"}*100",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{kubernetes_pod_name}}",
@@ -1902,7 +1902,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "kafka_server_kafkarequesthandlerpool_requesthandleravgidle_percent{kubernetes_namespace=\"$kubernetes_namespace\",strimzi_io_cluster=\"$strimzi_cluster_name\",kubernetes_pod_name=~\"$strimzi_cluster_name-$kafka_broker\"}*100",
+          "expr": "kafka_server_kafkarequesthandlerpool_requesthandleravgidle_percent{namespace=\"$kubernetes_namespace\",strimzi_io_cluster=\"$strimzi_cluster_name\",kubernetes_pod_name=~\"$strimzi_cluster_name-$kafka_broker\"}*100",
           "format": "time_series",
           "hide": false,
           "intervalFactor": 1,
@@ -1987,7 +1987,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "kafka_log_log_size{kubernetes_namespace=\"$kubernetes_namespace\",strimzi_io_cluster=\"$strimzi_cluster_name\",kubernetes_pod_name=~\"$strimzi_cluster_name-$kafka_broker\",topic=~\"$kafka_topic\",partition=~\"$kafka_partition\"}",
+          "expr": "kafka_log_log_size{namespace=\"$kubernetes_namespace\",strimzi_io_cluster=\"$strimzi_cluster_name\",kubernetes_pod_name=~\"$strimzi_cluster_name-$kafka_broker\",topic=~\"$kafka_topic\",partition=~\"$kafka_partition\"}",
           "format": "time_series",
           "instant": false,
           "intervalFactor": 1,
@@ -2072,7 +2072,7 @@
         "multi": false,
         "name": "strimzi_cluster_name",
         "options": [],
-        "query": "query_result(kafka_server_replicamanager_leadercount{kubernetes_namespace=\"$kubernetes_namespace\"})",
+        "query": "query_result(kafka_server_replicamanager_leadercount{namespace=\"$kubernetes_namespace\"})",
         "refresh": 1,
         "regex": "/.*strimzi_io_cluster=\"([^\"]*).*/",
         "sort": 0,
@@ -2092,7 +2092,7 @@
         "multi": false,
         "name": "kafka_broker",
         "options": [],
-        "query": "query_result(kafka_server_replicamanager_leadercount{kubernetes_namespace=\"$kubernetes_namespace\",strimzi_io_cluster=\"$strimzi_cluster_name\"})",
+        "query": "query_result(kafka_server_replicamanager_leadercount{namespace=\"$kubernetes_namespace\",strimzi_io_cluster=\"$strimzi_cluster_name\"})",
         "refresh": 1,
         "regex": "/.*statefulset_kubernetes_io_pod_name=\"$strimzi_cluster_name-([^\"]*).*/",
         "sort": 0,
@@ -2112,7 +2112,7 @@
         "multi": false,
         "name": "kafka_topic",
         "options": [],
-        "query": "query_result(kafka_cluster_partition_replicascount{kubernetes_namespace=\"$kubernetes_namespace\",strimzi_io_cluster=\"$strimzi_cluster_name\",kubernetes_pod_name=~\"$strimzi_cluster_name-$kafka_broker\"})",
+        "query": "query_result(kafka_cluster_partition_replicascount{namespace=\"$kubernetes_namespace\",strimzi_io_cluster=\"$strimzi_cluster_name\",kubernetes_pod_name=~\"$strimzi_cluster_name-$kafka_broker\"})",
         "refresh": 1,
         "regex": "/.*topic=\"([^\"]*).*/",
         "sort": 0,
@@ -2132,7 +2132,7 @@
         "multi": true,
         "name": "kafka_partition",
         "options": [],
-        "query": "query_result(kafka_log_log_size{kubernetes_namespace=\"$kubernetes_namespace\",strimzi_io_cluster=\"$strimzi_cluster_name\",kubernetes_pod_name=~\"$strimzi_cluster_name-$kafka_broker\",topic=~\"$kafka_topic\"})",
+        "query": "query_result(kafka_log_log_size{namespace=\"$kubernetes_namespace\",strimzi_io_cluster=\"$strimzi_cluster_name\",kubernetes_pod_name=~\"$strimzi_cluster_name-$kafka_broker\",topic=~\"$kafka_topic\"})",
         "refresh": 1,
         "regex": "/.*partition=\"([^\"]*).*/",
         "sort": 3,
@@ -2175,6 +2175,5 @@
   },
   "timezone": "",
   "title": "Kafka",
-  "uid": "8wCTC5Tmz",
   "version": 6
 }
