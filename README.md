@@ -14,6 +14,10 @@ It also includes Kubernetes network policies to restrict traffic to the Kafka cl
 
 A perftest is also included with the repo. This perf test creates clients within the Kafka namespaces and uses TLS mutual authentication.
 
+## Replication
+
+A sample configuration for mirror maker is included with the repo. Upload the destination cluster's certificate into the variable `mirrormaker-cluster-ca-cert` in the `kafka` namespace, and add the IP address of the destination cluster's broker into `mirror-maker.yaml`.
+
 ## Setting Up Grafana Dashboards
 
 The sample configuration provided does not expose grafana and prometheus metrics through an externally accessible IP. You may choose to create an external IP. Alternatively, you can connect to your cluster and port forward the grafana dashboard.
