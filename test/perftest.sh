@@ -31,8 +31,8 @@ sleep 5s
 setup_kafka_client_ssl () {
   echo "Setting Up Kafka Client for SSL"
   for i in $(seq 0 2); do # End Number is replication factor of kafka client - 1
-    kubectl cp ./common.sh "kafka/kafkaclient-$i:/opt/kafka/"
-    kubectl cp ./perftest_ssl.sh "kafka/kafkaclient-$i:/opt/kafka/"
+    kubectl cp ./client_helpers/common.sh "kafka/kafkaclient-$i:/opt/kafka/"
+    kubectl cp ./client_helpers/perftest_ssl.sh "kafka/kafkaclient-$i:/opt/kafka/"
     kubectl exec -n kafka -it "kafkaclient-$i" -- bash perftest_ssl.sh
   done
 }
