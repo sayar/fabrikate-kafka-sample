@@ -16,7 +16,15 @@ A perftest is also included with the repo. This perf test creates clients within
 
 ## Replication
 
-A sample configuration for mirror maker is included with the repo. Upload the destination cluster's certificate into the variable `mirrormaker-cluster-ca-cert` in the `kafka` namespace, and add the IP address of the destination cluster's broker into `mirror-maker.yaml`.
+A sample configuration for mirror maker is included with the repo. Upload the destination cluster's certificate into a secret called `mirrormaker-cluster-ca-cert` in the `kafka` namespace, and add the IP address of the destination cluster's broker into `mirror-maker.yaml`. To test out Mirror Maker, run ./test/mirror-maker.sh to set up clients within the Kafka namespace authenticated with mutual TLS authentication. You can then test out replication by using the kafkaclient pods:
+
+```
+kubectl exec -it kafkaclient-0 --namespace kafka -- /bin/bash
+./bin/kafka-console-producer.sh --broker-list kcluster-kafka-bootstrap:9093 --topic test-replication --producer.config config/client-ssl.properties
+
+kubectl exec -it kafkaclient-1 --namespace kafka -- /bin/bash
+./bin/kafka-console-consumer.sh --bootstrap-server <DEST-IP>:9094 --topic test-replication --consumer.config config/mm-client-ssl.properties --from-beginning
+```
 
 ## Setting Up Grafana Dashboards
 
