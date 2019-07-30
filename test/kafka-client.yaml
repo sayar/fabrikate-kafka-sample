@@ -40,6 +40,11 @@ spec:
             secretKeyRef:
               name: perftest-user
               key: user.key
+        - name: MM_CA_CRT
+          valueFrom:
+            secretKeyRef:
+              name: mirror-maker-cluster-ca-cert
+              key: ca.crt
       affinity:
         podAntiAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
