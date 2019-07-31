@@ -13,10 +13,22 @@ spec:
       trustedCertificates:
         - secretName: cluster1-cluster-ca-cert
           certificate: ca.crt
+    authentication:
+      type: tls
+      certificateAndKey:
+        secretName: test-user
+        certificate: user.crt
+        key: user.key
   producer:
     bootstrapServers: <DEST-CLUSTER-IP>:9094
     tls:
       trustedCertificates:
         - secretName: mirrormaker-cluster-ca-cert
           certificate: ca.crt
+    authentication:
+      type: tls
+      certificateAndKey:
+        secretName: mirror-maker-user
+        certificate: user.crt
+        key: user.key
   whitelist: ".*"
