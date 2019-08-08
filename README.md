@@ -35,4 +35,4 @@ The sample configuration provided does not expose grafana and prometheus metrics
 
 Browse to `localhost:3000/dashboard/import`.
 
-There are three dashboards [Kafka, Kafka Connect and Zookeeper Metrics] included in the `dashboards/` folder. You can either copy paste the content of the json files or use the "Upload .json File".
+There are six dashboards [Kafka, Kafka Connect, Zookeeper Metrics, Portworx Node, Portworx Volume, and Portworx Cluster] included in the `dashboards/` folder. You can either copy paste the content of the json files or use the "Upload .json File".
