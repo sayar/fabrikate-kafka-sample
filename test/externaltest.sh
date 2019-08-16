@@ -85,10 +85,6 @@ cleanup_cluster()
 deploy_kafka_connect_connector()
 {
   # Get MongoDB Credentials from Env Vars.
-  # TODO: Remove echos
-  echo $MONGODB_CONN_URL
-  echo $DATABASE
-  echo $COLLECTION
 
   # Create connector payload
   CONNECTOR_FILE="./temp/${TESTING_TOPIC}/create-connector.json"
